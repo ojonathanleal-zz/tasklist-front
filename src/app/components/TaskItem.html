@@ -1,0 +1,17 @@
+<li ng-class="{'editing': $ctrl.editing, 'completed': $ctrl.task.completed}">
+  <task-text-input
+    ng-if="$ctrl.editing"
+    text="$ctrl.task.text"
+    editing="$ctrl.editing"
+    on-save="$ctrl.handleSave(text)"></task-text-input>
+
+  <div class="view" ng-if="!$ctrl.editing">
+    <input
+      class="toggle"
+      type="checkbox"
+      ng-checked="$ctrl.task.completed"
+      ng-click="$ctrl.onChange({id: $ctrl.task.id})">
+    <label ng-dblclick="$ctrl.handleDoubleClick()">{{$ctrl.task.text}}</label>
+    <button class="destroy" ng-click="$ctrl.handleDestroy($ctrl.task.id)"></button>
+  </div>
+</li>
